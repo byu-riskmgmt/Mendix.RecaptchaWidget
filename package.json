@@ -1,9 +1,9 @@
 {
   "name": "recaptchaversiontwo",
   "widgetName": "RecaptchaVersionTwo",
-  "version": "2.0.0",
-  "description": "My widget description",
-  "copyright": "Objectivity 2020 ",
+  "version": "2.1.0",
+  "description": "A Mendix Widget implementing the Recaptcha V3 API",
+  "copyright": "Objectivity 2020",
   "author": "Lenka Hruscakova",
   "config": {
     "projectPath": "./tests/reCAPTCHA3-main/",
@@ -22,10 +22,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^8.12.0"
+    "@mendix/pluggable-widgets-tools": "^10.7.2"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "react-google-recaptcha": "^2.1.0"
+    "classnames": "^2.5.1",
+    "react-google-recaptcha": "^3.1.0"
   }
 }

@@ -1,26 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<widget id="objectivity.recaptchaversiontwo.RecaptchaVersionTwo" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+    id="objectivity.recaptchaversiontwo.RecaptchaVersionTwo"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Web"
     xmlns="http://www.mendix.com/widget/1.0/"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
     <name>Recaptcha</name>
     <description>ReCaptcha google widget for mendix applications</description>
-    <icon/>
+    <icon />
     <properties>
         <propertyGroup caption="General">
             <property key="sitekey" type="expression" required="true">
-                <caption>Site key</caption>
+                <caption>Site Key</caption>
                 <description>The API client key</description>
                 <returnType type="String" />
             </property>
             <property key="token" type="attribute" required="true">
                 <caption>Token</caption>
-                <description>Attribute that will be set with the Recaptcha token. It should be used in a REST call to Google to validate it. 
-                If validation fails, you should update this string to empty.</description>
+                <description>Attribute that will be set with the reCAPTCHA token. It should be used in a REST call to Google to validate it. If validation fails, you should update this string to empty.</description>
                 <attributeTypes>
-                    <attributeType name="String"/>
+                    <attributeType name="String" />
                 </attributeTypes>
             </property>
-            <property key="theme" type="enumeration" defaultValue= "light">
+            <property key="theme" type="enumeration" defaultValue="light">
                 <caption>Theme</caption>
                 <description>The theme of the widget</description>
                 <enumerationValues>
@@ -28,30 +34,46 @@
                     <enumerationValue key="dark">Dark</enumerationValue>
                 </enumerationValues>
             </property>
-            <property key="size" type="enumeration" defaultValue= "normal">
+            <property key="size" type="enumeration" defaultValue="normal">
                 <caption>Size</caption>
-                <description>This allows you to change the size.</description>
+                <description>The size of the widget</description>
                 <enumerationValues>
                     <enumerationValue key="compact">Compact</enumerationValue>
-                    <enumerationValue key="normal">Normal </enumerationValue>
-                    <enumerationValue key="invisible">Invisible </enumerationValue>
+                    <enumerationValue key="normal">Normal</enumerationValue>
+                    <enumerationValue key="invisible">Invisible</enumerationValue>
                 </enumerationValues>
             </property>
-            <property key="badge" type="enumeration" defaultValue= "bottomright">
+            <property key="type" type="enumeration" defaultValue="image">
+                <caption>Type</caption>
+                <description>The type of reCAPTCHA puzzle to use</description>
+                <enumerationValues>
+                    <enumerationValue key="image">Image</enumerationValue>
+                    <enumerationValue key="audio">Audio</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="badge" type="enumeration" defaultValue="bottomright">
                 <caption>Badge Position</caption>
-                <description>Set the position of Recaptcha badge (For invisible size only)</description>
+                <description>Set the position of reCAPTCHA badge (For invisible size only)</description>
                 <enumerationValues>
                     <enumerationValue key="bottomright">Bottom Right</enumerationValue>
                     <enumerationValue key="bottomleft">Bottom Left</enumerationValue>
                     <enumerationValue key="inline">Inline</enumerationValue>
                 </enumerationValues>
             </property>
-            <property key="onChangeObject" type="action">
-                <caption>On click action</caption>
-                <description>...</description>
-             </property>
-
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <property key="onChangeAction" type="action">
+                <caption>Change Action</caption>
+                <description>An action to be called when the user successfully completes the captcha.</description>
+            </property>
+            <property key="onErrorAction" type="action">
+                <caption>Error Action</caption>
+                <description> An action to be called when the challenge errored, most likely due to network issues.</description>
+            </property>
+            <property key="onExpiredAction" type="action">
+                <caption>Expired Action</caption>
+                <description>An action to be called when the challenge is expired and has to be redone by the user.  This will also call the Change action with an empty token value.</description>
+            </property>
         </propertyGroup>
     </properties>
 </widget>
-

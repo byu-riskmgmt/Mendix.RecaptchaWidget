@@ -1,11 +1,11 @@
-import React, { Component, createElement } from "react";
+import { Component, createElement, createRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default class ReCaptcha extends Component {
     constructor(props) {
         super(props);
         this.state = { token: "" };
-        this.recaptchaRef = React.createRef();
+        this.recaptchaRef = createRef();
         this.lastToken = "";
         window.recaptchaRef = {
             execute: this.execute.bind(this)
@@ -25,7 +25,15 @@ export default class ReCaptcha extends Component {
         const token = this.recaptchaRef.current.getValue();
         this.lastToken = token;
         this.props.token.setValue(token);
-        this.props.onChangeObject.execute();
+        this.props.onChangeAction.execute();
+    }
+
+    onErrorEvent() {
+        this.props.onErrorAction.execute();
+    }
+
+    onExpiredEvent() {
+        this.props.onExpiredAction.execute();
     }
 
     execute() {
@@ -46,9 +54,13 @@ export default class ReCaptcha extends Component {
                 ref={this.recaptchaRef}
                 sitekey={this.props.sitekey.value}
                 onChange={this.onChangeEvent.bind(this)}
+                onErrored={this.onErrorEvent.bind(this)}
+                onExpired={this.onExpiredEvent.bind(this)}
                 theme={this.props.theme}
                 size={this.props.size}
                 badge={this.props.badge}
+                type={this.props.type}
+                tabindex={this.props.tabIndex}
             />
         );
     }
