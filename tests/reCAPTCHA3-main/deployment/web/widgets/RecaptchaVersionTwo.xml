@@ -16,7 +16,7 @@
         <propertyGroup caption="General">
             <property key="sitekey" type="expression" required="true">
                 <caption>Site Key</caption>
-                <description>The API client key</description>
+                <description>The API client key. To use the module constant, this should be set to `@Recaptcha.SiteKey`.</description>
                 <returnType type="String" />
             </property>
             <property key="token" type="attribute" required="true">
